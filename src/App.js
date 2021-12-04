@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './sass/style.scss';
+
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import store from './store';
+import Navbar from './components/layout/Navbar';
+import Homepage from './components/pages/Homepage';
+import AddShop from './components/pages/AddShop';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Provider store={store}>
+			<Router>
+				<div className='wrapper'>
+					<Navbar />
+					<Routes>
+						<Route path='/' element={<Homepage />} />
+						<Route path='/addShop' element={<AddShop />} />
+					</Routes>
+				</div>
+			</Router>
+		</Provider>
+	);
 }
 
 export default App;

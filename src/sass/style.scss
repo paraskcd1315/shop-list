@@ -1,0 +1,179 @@
+@import 'config';
+@import 'utilities';
+
+.wrapper {
+	height: 100vh;
+	@include set-background-color($light-color);
+}
+
+.navbar {
+	text-align: center;
+	@include set-background-color($dark-color);
+	@include add-shadows();
+}
+
+.homepage,
+.addShopPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.shopList {
+	width: 50%;
+}
+
+.container .listHeader {
+	display: flex;
+	justify-content: space-between;
+	@include set-background-color($dark-color);
+	@include add-shadows();
+	border-radius: 0.5rem;
+}
+
+.empty {
+	text-align: center;
+}
+
+.shop {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid $dark-color;
+	padding: 1rem;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.shop .light {
+	width: 10px;
+	height: 10px;
+	border-radius: 99px;
+
+	&.greenLight {
+		box-shadow: 0px 0px 5px $success-color;
+		@include set-background-color($success-color);
+	}
+
+	&.redLight {
+		box-shadow: 0px 0px 5px $danger-color;
+		@include set-background-color($danger-color);
+	}
+}
+
+.container .listContent {
+	@include set-background-color(#f5f5f5);
+	border-radius: 0.5rem;
+	@include add-shadows();
+}
+
+.shopList .container,
+.container .listContent {
+	display: flex;
+	flex-direction: column;
+}
+
+.addShopPage {
+	.header {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.form-group {
+	margin: 1.2rem 0;
+}
+
+.form-text {
+	display: block;
+	margin-top: 0.3rem;
+	color: #888;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select,
+textarea {
+	display: block;
+	width: 100%;
+	padding: 0.4rem;
+	font-size: 1.2rem;
+	border: 1px solid #ccc;
+}
+
+.btn {
+	border: none;
+	outline: none;
+	@include add-shadows();
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 250ms ease all;
+	text-decoration: none;
+	text-align: center;
+
+	&.btn-back {
+		box-shadow: none;
+	}
+
+	&.btn-normal {
+		@include set-background-color($dark-color);
+
+		&.add-button {
+			width: 15%;
+		}
+
+		&:hover {
+			@include set-background-color(lighten($dark-color, 20));
+		}
+
+		&:active {
+			@include set-background-color(lighten($dark-color, 10));
+			box-shadow: unset;
+			transform: scale(0.9);
+		}
+	}
+	&.btn-success {
+		@include set-background-color($success-color);
+	}
+	&.btn-danger {
+		@include set-background-color($danger-color);
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.shopList {
+		width: 65%;
+	}
+}
+
+@media only screen and (max-width: 540px) {
+	.shopList {
+		width: 70%;
+	}
+
+	.btn.btn-normal.add-button {
+		width: 20%;
+	}
+}
+
+@media only screen and (max-width: 470px) {
+	.shopList {
+		width: 75%;
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	.shopList {
+		width: 100%;
+	}
+	.btn.btn-normal.add-button {
+		width: 30%;
+	}
+}
